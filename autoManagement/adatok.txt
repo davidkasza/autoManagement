@@ -1,0 +1,31 @@
+Kasza Dávid - Gazdaságinformatikus BSc -from src.Rent import Rent
+
+class AutoManagement:
+    def __init__(self, name):
+        self.name = name
+        self.autos = []
+        self.rents = []
+
+    def add_auto(self, auto):
+        self.autos.append(auto)
+
+    def list_autos(self):
+        return [str(auto) for auto in self.autos]
+
+    def rent_auto(self, number_plate, date):
+        for auto in self.autos:
+            if auto.number_plate == number_plate:
+                rent = Rent(auto, date)
+                self.rents.append(rent)
+                return f"Rent is success! Price: {auto.rental_price}"
+        return "Auto not found!"
+
+    def cancel_rent_auto(self, number_plate, date):
+        for rent in self.rents:
+            if rent.auto.number_plate == number_plate and rent.date == date:
+                self.rents.remove(rent)
+                return "Rent cancelled successfully!"
+            return "Rent not found!"
+
+    def list_rents(self):
+        return [str(rent) for rent in self.rents] EQ5PN6
